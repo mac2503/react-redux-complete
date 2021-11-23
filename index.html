@@ -17,14 +17,46 @@
         name: 'Nikita',
         age: 21
       }
+      handleClick = (e) => {
+        // console.log(e.target);
+        this.setState({
+          name: 'Mahek',
+          age: 19
+        })
+        console.log(this.state);
+      }
+      handleMouseOver = (e) => {
+        console.log(e.target, e.pageX)
+      }
+      handleCopy = (e) => {
+        console.log('Try being original for once')
+      }
+      handleChange = (e) => {
+        this.setState({
+          name: e.target.value
+        })
+      }
+      handleSubmit = (e) => {
+        // Will prevent the default behaviour of refreshing the page
+        e.preventDefault();
+        console.log("Form submitted", this.state.name)
+      }
       render() {
         return (
           // JSX
           // We can only return 1 component
           // Instead of class, we have to use className as class is a reserved keyword
-          <div>
-            <h1>Hey, ninjas</h1>
+          <div className="app-content">
+            <h1>My name is {this.state.name}</h1>
+            <form onSubmit={this.handleSubmit}>
+              <input type="text" onChange={this.handleChange}/>
+              <button>Submit</button>
+            </form>
+            {/* <h1>Hey, ninjas</h1>
             <p>My name is: {this.state.name} & I am {this.state.age}</p>
+            <button onClick={this.handleClick}>Click Me</button>
+            <button onMouseOver={this.handleMouseOver}>Hover Me</button>
+            <p onCopy={this.handleCopy}>What we think, we become</p> */}
           </div>
         )
       }
